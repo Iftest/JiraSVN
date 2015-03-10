@@ -25,6 +25,8 @@ namespace JiraSVN.Plugin.UI
         /// </summary>
         public ConnectingDialog()
         {
+			
+	        ControlBox = false;
             InitializeComponent();
             _connectionLabelDots = 0;
             _connectionText = _connectionLabel.Text;
@@ -62,7 +64,7 @@ namespace JiraSVN.Plugin.UI
             _connectionLabel.Text = _connectionText + new string('.', _connectionLabelDots);
         }
 
-        private void ConnectingDialog_Load(object sender, EventArgs e)
+	    private void ConnectingDialog_Load(object sender, EventArgs e)
         {
             _animationTimer.Enabled = true;
             Worker.RunWorkerAsync(Argument);
