@@ -306,7 +306,10 @@ namespace JiraSVN.Plugin.UI
 
 			foreach (IIssue issue in SelectedIssues)
 			{
-				result.AppendFormat("{0} {1} : {2}", actionName, issue.DisplayId, issue.Name);
+				if (PerformAction)
+					result.AppendFormat("{0} {1} - {2}", actionName, issue.DisplayId, issue.Name);
+				else
+					result.AppendFormat("{0} - {1}", issue.DisplayId, issue.Name);
 				result.AppendLine();
 			}
 
