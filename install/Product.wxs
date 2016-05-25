@@ -40,8 +40,6 @@
 			<Directory Id="$(var.PlatformProgramFilesFolder)">
 				<Directory Id="INSTALLLOCATION" Name="$(var.ProductNameBase)" FileSource="$(var.SourceFolder)">
 					<Component Id="C__JiraSVN" Guid="{CDE2D29D-41AB-4ACC-9174-B4D866FA801D}" Win64="$(var.Win64)">
-						<File Id="F__CSharpTest.Net.Library.dll" Name="CSharpTest.Net.Library.dll" />
-						<File Id="F__CSharpTest.Net.Logging.dll" Name="CSharpTest.Net.Logging.dll" />
 						<File Id="F__JiraSVN.Common.dll" Name="JiraSVN.Common.dll" />
 						<File Id="F__JiraSVN.Editor.exe" Name="JiraSVN.Editor.exe" KeyPath="yes" />
 						<File Id="F__JiraSVN.Editor.exe.config" Name="JiraSVN.Editor.exe.config" />
@@ -51,7 +49,13 @@
 						<File Id="F__SharpSvn.dll" Name="SharpSvn.dll" Source="$(var.SolutionDir)depend\SharpSvn\$(var.Platform)\SharpSvn.dll" />
 						<File Id="F__Tortoise.ico" Name="Tortoise.ico" Source="$(var.SolutionDir)res\Tortoise.ico" />
 						<File Id="F__LICENSE_2.0.txt" Name="LICENSE-2.0.txt" Source="$(var.SolutionDir)LICENSE-2.0.txt" />
-					</Component>
+            <File Id="F__Atlassian.Jira.dll"         Name="Atlassian.Jira.dll"         Source="$(var.SolutionDir)depend\Atlassian.NET-sdk\NET40\Atlassian.Jira.dll"/>
+            <File Id="F__Newtonsoft.Json.dll"        Name="Newtonsoft.Json.dll"        Source="$(var.SolutionDir)depend\Atlassian.NET-sdk\NET40\Newtonsoft.Json.dll"/>
+            <File Id="F__RestSharp.dll"              Name="RestSharp.dll"              Source="$(var.SolutionDir)depend\Atlassian.NET-sdk\NET40\RestSharp.dll"/>
+            <File Id="F__CSharpTest.Net.Library.dll" Name="CSharpTest.Net.Library.dll" Source="$(var.SolutionDir)depend\CSharpTest.Net\NET40\CSharpTest.Net.Library.dll"/>
+            <File Id="F__CSharpTest.Net.Logging.dll" Name="CSharpTest.Net.Logging.dll" Source="$(var.SolutionDir)depend\CSharpTest.Net\NET40\CSharpTest.Net.Logging.dll"/>
+
+          </Component>
 				</Directory>
 			</Directory>
 
@@ -73,8 +77,8 @@
 					</RegistryKey>
 					<RegistryKey Key="InprocServer32">
 						<RegistryValue Value="mscoree.dll" Type="string" Action="write" />
-						<RegistryValue Name="RuntimeVersion" Value="v2.0.50727" Type="string" Action="write" />
-						<RegistryValue Name="Assembly" Value="JiraSVN.Plugin, Version=3.0.0.0, Culture=neutral, PublicKeyToken=60c82babf932569d" Type="string" Action="write" />
+						<RegistryValue Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+						<RegistryValue Name="Assembly" Value="JiraSVN.Plugin, Version=3.2.0.0, Culture=neutral, PublicKeyToken=60c82babf932569d" Type="string" Action="write" />
 						<RegistryValue Name="Class" Value="JiraSVN.Plugin.TortoiseSvnPlugin" Type="string" Action="write" />
 						<RegistryValue Name="CodeBase" Value="[INSTALLLOCATION]JiraSVN.Plugin.dll" Type="string" Action="write" />
 						<RegistryValue Name="ThreadingModel" Value="Both" Type="string" Action="write" />
