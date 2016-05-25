@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>JiraSVN.Jira</RootNamespace>
     <AssemblyName>JiraSVN.Jira</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <StartupObject>
     </StartupObject>
     <DocumentationFile Condition="'$(OutputType)' == 'Library'">$(OutputPath)$(AssemblyName).xml</DocumentationFile>
@@ -42,6 +42,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <Optimize>false</Optimize>
@@ -64,13 +65,16 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Library">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\depend\CSharpTest.Net.Library.dll</HintPath>
+    <Reference Include="Atlassian.Jira">
+      <HintPath>..\..\depend\Atlassian.NET-sdk\x64\Atlassian.Jira.dll</HintPath>
     </Reference>
-    <Reference Include="Logging">
+    <Reference Include="CSharpTest.Net.Library, Version=1.10.1124.358, Culture=neutral, PublicKeyToken=06aee00cce822474, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\depend\CSharpTest.Net.Logging.dll</HintPath>
+      <HintPath>..\..\depend\CSharpTest.Net40\CSharpTest.Net.Library.dll</HintPath>
+    </Reference>
+    <Reference Include="CSharpTest.Net.Logging, Version=1.10.1124.358, Culture=neutral, PublicKeyToken=06aee00cce822474, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\depend\CSharpTest.Net40\CSharpTest.Net.Logging.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
