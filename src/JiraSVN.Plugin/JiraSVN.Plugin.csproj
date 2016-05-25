@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>JiraSVN.Plugin</RootNamespace>
     <AssemblyName>JiraSVN.Plugin</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <StartupObject>
     </StartupObject>
     <DocumentationFile Condition="'$(OutputType)' == 'Library'">$(OutputPath)$(AssemblyName).xml</DocumentationFile>
@@ -41,6 +41,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <Optimize>False</Optimize>
@@ -68,15 +69,13 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Library">
+    <Reference Include="CSharpTest.Net.Library, Version=1.10.1124.358, Culture=neutral, PublicKeyToken=06aee00cce822474, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\depend\CSharpTest.Net.Library.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\depend\CSharpTest.Net40\CSharpTest.Net.Library.dll</HintPath>
     </Reference>
-    <Reference Include="Logging">
+    <Reference Include="CSharpTest.Net.Logging, Version=1.10.1124.358, Culture=neutral, PublicKeyToken=06aee00cce822474, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\depend\CSharpTest.Net.Logging.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\depend\CSharpTest.Net40\CSharpTest.Net.Logging.dll</HintPath>
     </Reference>
     <Reference Include="SharpSvn, Version=1.7001.1937.11872, Culture=neutral, PublicKeyToken=d729672594885a28, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
