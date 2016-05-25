@@ -88,7 +88,7 @@ namespace JiraSVN.Plugin
                 result = props.Search(".", true, name);
             }
             result = !String.IsNullOrEmpty(result) ? result : GetAppSetting(name);
-            Log.Verbose("Setting for name = {0} commonRoot = {1} is {3} ", name, commonRoot, result); 
+            Log.Verbose("Setting for name = {0} commonRoot = {1} is {2} ", name, commonRoot, result); 
             return result;
         }
 
