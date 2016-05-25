@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Include>
-	<?define ProductVersion		= "3.0.0.0" ?>
+	<?define ProductVersion		= "3.2.0.0" ?>
 	<?define ProductNameBase	= "TortoiseSVN Jira Plugin" ?>
 	<?define ProductCode		= "{FB78A350-2F0C-45AF-9756-797E24747596}" ?>
 	<?define Manufacturer		= "CSharpTest.Net" ?>
-	<?define ManufacturerLink	= "https://github.com/dscowan/JiraSVN" ?>
+	<?define ManufacturerLink	= "https://github.com/gmoore777/JiraSVN" ?>
 	<?define SourceFolder		= $(var.SolutionDir)bin\$(var.Configuration)\ ?>
 
 	<?if $(var.Platform) = x64 ?>
