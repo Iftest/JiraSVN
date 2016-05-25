@@ -26,7 +26,7 @@ namespace JiraSVN.Jira
 		/// <summary> Names this type of connection </summary>
 		public string ServiceName
 		{
-			get { return "Jira"; }
+			get { return "Jira via REST"; }
 		}
 
 		/// <summary> Property we look for </summary>
