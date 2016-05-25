@@ -48,7 +48,7 @@ namespace JiraSVN.Plugin
                     {
                         AssemblyName test = AssemblyName.GetAssemblyName(path);
                         if (name == test)
-                            loaded = Assembly.LoadFile(path, AppDomain.CurrentDomain.Evidence);
+                            loaded = Assembly.LoadFile(path);
                         _assemblies[args.Name] = loaded;
                     }
 
