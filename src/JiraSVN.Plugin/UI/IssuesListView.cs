@@ -56,35 +56,35 @@ namespace JiraSVN.Plugin.UI
 
 		public IssuesListView(IIssuesServiceConnection service, string message, string[] files)
 		{
-			PropertyChanged += new PropertyChangedEventHandler(DebugPropertyChanged);
+            PropertyChanged += new PropertyChangedEventHandler(DebugPropertyChanged);
 
 			_service = service;
 			_comments = message;
 
-			_filters.ReplaceContents(_service.GetFilters());
+            _filters.ReplaceContents(_service.GetFilters());
 
-			_assignees.AddRange(new IIssueUser[] { ReportedByUser.Instance, _service.CurrentUser });
-			_assignees.AddRange(_service.GetUsers());
+            _assignees.AddRange(new IIssueUser[] { ReportedByUser.Instance, _service.CurrentUser });
+            _assignees.AddRange(_service.GetUsers());
 
-			_serializer = new ObjectSerializer(this, 
+            _serializer = new ObjectSerializer(this, 
 				"_filters.SelectedText",
 				"_assignedFilter.SelectedText",
 				"_statusFilter.SelectedText",
 				"_actions.SelectedText",
 				"_assignees.SelectedText"
 				);
-			_serializer.ContinueOnError = true;
-			_serializer.Deserialize(_storage);
+            _serializer.ContinueOnError = true;
+            _serializer.Deserialize(_storage);
 
-			// if no filter is pre-selected, select the last one, as this is the search filter
+            // if no filter is pre-selected, select the last one, as this is the search filter
             // this increases the performance (no need to display all items)
             if (_filters.SelectedIndex == -1 && _filters.Count > 0)
                 _filters.SelectedIndex = _filters.Count - 1; 
 
             ServerFilterChanged(String.Empty);
-		}
+        }
 
-		public void Dispose()
+        public void Dispose()
 		{
 			_serializer.Serialize(_storage);
 		}
@@ -120,7 +120,7 @@ namespace JiraSVN.Plugin.UI
 
 		public void Refresh(bool applyLocal)
 		{
-			IIssueFilter filter;
+            IIssueFilter filter;
 			List<IssueItemView> found = new List<IssueItemView>();
 
 			Dictionary<string, IIssueUser> distinct = new Dictionary<string, IIssueUser>();
@@ -137,8 +137,8 @@ namespace JiraSVN.Plugin.UI
 					items = ((IIssueFilterWithSearch)filter).GetIssues(_textFilter, 0, 50);
 				else
 					items = filter.GetIssues(0, 50);
-
-				foreach (IIssue issue in items)
+                Log.Info("Inside IssuesListView.Refresh: Count of issues just gotten is {0}.", items.Length);
+                foreach (IIssue issue in items)
 				{
 					IssueItemView item = new IssueItemView(this, issue);
 					found.Add(item);
@@ -153,15 +153,20 @@ namespace JiraSVN.Plugin.UI
 
 			_found = found.ToArray();
 			_assignees.AddRange(distinct.Values);
+            Log.Info("Inside IssuesListView.Refresh: _found.Length is {0}. _assignees.Count is {1}, assigned.Count is {2}, statuses.Count is {3}",
+                    _found.Length, _assignees.Count, assigned.Count, statuses.Count );
 
-			_assignedFilter.ReplaceContents(assigned.Values);
-			if (_assignedFilter.SelectedItem == null)
+            _assignedFilter.ReplaceContents(assigned.Values);
+            if (_assignedFilter.SelectedItem == null)
 			{
 				_assignedFilter.SelectedItem = AllUsersFilter.Instance;
 				if (_assignedFilter.IsSelectionDirty)
 					OnPropertyChanged("SelectedAssignmentFilter");
 			}
-			_statusFilter.ReplaceContents(statuses.Values);
+            foreach (var i in statuses.Keys) {
+                Log.Info("statuses[{0}]={1}", i, statuses[i]);
+            }
+            _statusFilter.ReplaceContents(statuses.Values);
 			if (_statusFilter.SelectedItem == null)
 			{
 				_statusFilter.SelectedItem = AllStatusFilter.Instance;
@@ -169,11 +174,11 @@ namespace JiraSVN.Plugin.UI
 					OnPropertyChanged("SelectedStatusFilter");
 			}
 
-			if(applyLocal)
+            if (applyLocal)
 				LocalFilterChanged();
-		}
+        }
 
-		void CheckIfFilterChanged(string propertyName)
+        void CheckIfFilterChanged(string propertyName)
 		{
 			OnPropertyChanged(propertyName);
 			if (_statusFilter.IsSelectionDirty || _assignedFilter.IsSelectionDirty || _lastTextFilter != _textFilter)
@@ -228,13 +233,18 @@ namespace JiraSVN.Plugin.UI
 					string phrase = part.Trim();
 					if (String.IsNullOrEmpty(phrase))
 						continue;
-					if (item.Name.IndexOf(phrase, StringComparison.InvariantCultureIgnoreCase) < 0 &&
-						item.DisplayId.IndexOf(phrase, StringComparison.InvariantCultureIgnoreCase) < 0 &&
-						item.FullDescription.IndexOf(phrase, StringComparison.InvariantCultureIgnoreCase) < 0 &&
-						item.CurrentState.Name.IndexOf(phrase, StringComparison.InvariantCultureIgnoreCase) < 0 &&
-						item.AssignedTo.Name.IndexOf(phrase, StringComparison.InvariantCultureIgnoreCase) < 0 &&
-						item.ReportedBy.Name.IndexOf(phrase, StringComparison.InvariantCultureIgnoreCase) < 0)
-						return false;
+                    // the plugin may display less records than what the JIRA query returned, as the JIRA query also searches the Comments field.
+                    if (item.Name.IndexOf(phrase, StringComparison.InvariantCultureIgnoreCase) < 0 &&
+                        item.DisplayId.IndexOf(phrase, StringComparison.InvariantCultureIgnoreCase) < 0 &&
+                        item.FullDescription.IndexOf(phrase, StringComparison.InvariantCultureIgnoreCase) < 0 &&
+                        item.CurrentState.Name.IndexOf(phrase, StringComparison.InvariantCultureIgnoreCase) < 0 &&
+                        item.AssignedTo.Name.IndexOf(phrase, StringComparison.InvariantCultureIgnoreCase) < 0 &&
+                        item.ReportedBy.Name.IndexOf(phrase, StringComparison.InvariantCultureIgnoreCase) < 0)
+                    {
+                        Log.Info("Not going to display JIRA issue of {0}. The search text may only be found in the Comments field or not at all since this text search may be applied on top of a saved filter.", item.DisplayId);
+
+                        return false;
+                    }
 				}
 			}
 
