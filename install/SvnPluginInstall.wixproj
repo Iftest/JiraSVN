@@ -47,7 +47,9 @@
     <PreBuildEvent />
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>rename "$(TargetPath)" "$(TargetName)-$(PlatformName)$(TargetExt)"
+    <PostBuildEvent>del $(TargetDir)\$(TargetName)-$(PlatformName)$(TargetExt)
+del $(TargetDir)\$(TargetName)-$(PlatformName).wixpdb
+rename "$(TargetPath)" "$(TargetName)-$(PlatformName)$(TargetExt)"
 rename "$(TargetPdbPath)" "$(TargetName)-$(PlatformName).wixpdb"</PostBuildEvent>
   </PropertyGroup>
   <!--
