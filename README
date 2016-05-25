@@ -1,14 +1,16 @@
 Welcome,
 
 Forked from:
-https://github.com/Wattos/JiraSVN/archives/master
+https://github.com/dscowan/JiraSVN
 
-With changes to comment formatting and some visual changes to waiting dialogs
+Converted from using SOAP to communicate with JIRA, to using REST.
+Also upped the .NET version that this project and other accompanying DLLs were using
+from .NET 3.5 to .NET 4.0 including signing all the DLLs.
 
-Version 3.x
+Version 3.2.0.0
 
 Full installer downloads available at:
-https://github.com/Wattos/JiraSVN/archives/master
+https://github.com/gmoore777/JiraSVN/
 
 Installation guide:
 https://github.com/csharptest/JiraSVN/wiki/Installation-Guide
