@@ -374,7 +374,8 @@ namespace JiraSVN.Plugin
 			{
 				Log.Error(e);
                 message = e.Message;
-				return false;
+                SaveSettings(user, serviceUri, null);// we need to delete the cache/registry of the username and password
+                return false;
 			}
 		}
 
