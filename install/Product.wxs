@@ -78,7 +78,7 @@
 					<RegistryKey Key="InprocServer32">
 						<RegistryValue Value="mscoree.dll" Type="string" Action="write" />
 						<RegistryValue Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
-						<RegistryValue Name="Assembly" Value="JiraSVN.Plugin, Version=3.2.0.0, Culture=neutral, PublicKeyToken=60c82babf932569d" Type="string" Action="write" />
+						<RegistryValue Name="Assembly" Value="JiraSVN.Plugin, Version=3.2.0.1, Culture=neutral, PublicKeyToken=60c82babf932569d" Type="string" Action="write" />
 						<RegistryValue Name="Class" Value="JiraSVN.Plugin.TortoiseSvnPlugin" Type="string" Action="write" />
 						<RegistryValue Name="CodeBase" Value="[INSTALLLOCATION]JiraSVN.Plugin.dll" Type="string" Action="write" />
 						<RegistryValue Name="ThreadingModel" Value="Both" Type="string" Action="write" />
