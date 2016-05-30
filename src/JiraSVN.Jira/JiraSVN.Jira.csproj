@@ -66,15 +66,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Atlassian.Jira">
-      <HintPath>..\..\depend\Atlassian.NET-sdk\x64\Atlassian.Jira.dll</HintPath>
+      <HintPath>..\..\depend\Atlassian.NET-sdk\NET40\Atlassian.Jira.dll</HintPath>
     </Reference>
-    <Reference Include="CSharpTest.Net.Library, Version=1.10.1124.358, Culture=neutral, PublicKeyToken=06aee00cce822474, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\depend\CSharpTest.Net40\CSharpTest.Net.Library.dll</HintPath>
+    <Reference Include="CSharpTest.Net.Library">
+      <HintPath>..\..\depend\CSharpTest.Net\NET40\CSharpTest.Net.Library.dll</HintPath>
     </Reference>
-    <Reference Include="CSharpTest.Net.Logging, Version=1.10.1124.358, Culture=neutral, PublicKeyToken=06aee00cce822474, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\depend\CSharpTest.Net40\CSharpTest.Net.Logging.dll</HintPath>
+    <Reference Include="CSharpTest.Net.Logging">
+      <HintPath>..\..\depend\CSharpTest.Net\NET40\CSharpTest.Net.Logging.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
