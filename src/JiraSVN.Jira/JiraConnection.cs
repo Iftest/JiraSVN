@@ -129,11 +129,28 @@ namespace JiraSVN.Jira
 
 		private void Connect()
         {
-            Log.Verbose("About to call Atlassian.Jira.Jira.CreateRestClient() ");
+            Log.Verbose("About to call Atlassian.Jira.Jira.CreateRestClient(). This does not connect to JIRA");
             jira = Atlassian.Jira.Jira.CreateRestClient(_rootUrl, _userName, _password, null);
-		}
 
-		public IIssueUser CurrentUser
+            _token=jira.GetAccessToken();// Tokens are no longer used with REST. _token = "<Unused>"
+            Log.Verbose("_token is {0}", _token);
+
+            try
+            {
+                Log.Verbose("About to make an actual connection to JIRA to test out username and password.");
+                foreach (var project in jira.GetProjects())
+                {
+                    Log.Verbose("Project = {0}.", project.Name);
+                }
+            }
+            catch (Exception e)
+            {
+                Log.Error(e);
+                throw new ApplicationException("Access denied: Connection issue. Possibly bad username or password.");
+            }
+        }
+
+        public IIssueUser CurrentUser
 		{
 			get { return _currentUser; }
 		}
