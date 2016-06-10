@@ -25,5 +25,5 @@ using System.Reflection;
 [assembly: AssemblyCompany("Roger Knapp")]
 [assembly: AssemblyCopyright("Copyright 2008 by Roger Knapp, Licensed under the Apache License, Version 2.0")]
 
-[assembly: AssemblyVersion("3.2.0.1")]
-[assembly: AssemblyFileVersion("3.2.0.1")]
+[assembly: AssemblyVersion("3.2.0.2")]
+[assembly: AssemblyFileVersion("3.2.0.2")]

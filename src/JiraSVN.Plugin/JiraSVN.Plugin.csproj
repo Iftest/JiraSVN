@@ -75,7 +75,7 @@
     <Reference Include="CSharpTest.Net.Logging">
       <HintPath>..\..\depend\CSharpTest.Net\NET40\CSharpTest.Net.Logging.dll</HintPath>
     </Reference>
-    <Reference Include="SharpSvn, Version=1.7001.1937.11872, Culture=neutral, PublicKeyToken=d729672594885a28, processorArchitecture=AMD64">
+    <Reference Include="SharpSvn, Version=1.8009.3299.43, Culture=neutral, PublicKeyToken=d729672594885a28, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\depend\SharpSvn\x64\SharpSvn.dll</HintPath>
     </Reference>
@@ -151,7 +151,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="SvnPlugin.reg">
     </None>
   </ItemGroup>
