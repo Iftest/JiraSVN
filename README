@@ -8,11 +8,13 @@ Converted from using SOAP to communicate with JIRA, to using REST.
 Also upped the .NET version that this project and other accompanying DLLs were using
 from .NET 3.5 to .NET 4.0 including signing all the DLLs.
 
-Version 3.2.0.0
+Version 3.2.0.x
 
 
 Full installer downloads available at:
-https://github.com/gmoore777/JiraSVN/releases/download/release_3.2.0.0/JiraTortoiseSvnPlugin-x64.msi
+https://github.com/gmoore777/JiraSVN/releases
+Choose the newest release. 
+Download the JiraTortoiseSvnPlugin-x64.msi file.
 
 
 Installation guide:
