@@ -14,7 +14,7 @@
 #endregion
 using System.Reflection;
 
-[assembly: AssemblyProduct("https://github.com/gmoore777/JiraSVN")]
+[assembly: AssemblyProduct("https://github.com/Iftest/JiraSVN")]
 
 #if DEBUG
 [assembly: AssemblyConfiguration("Debug")]
@@ -25,5 +25,5 @@ using System.Reflection;
 [assembly: AssemblyCompany("Roger Knapp")]
 [assembly: AssemblyCopyright("Copyright 2008 by Roger Knapp, Licensed under the Apache License, Version 2.0")]
 
-[assembly: AssemblyVersion("3.2.0.2")]
-[assembly: AssemblyFileVersion("3.2.0.2")]
+[assembly: AssemblyVersion("3.2.0.3")]
+[assembly: AssemblyFileVersion("3.2.0.3")]

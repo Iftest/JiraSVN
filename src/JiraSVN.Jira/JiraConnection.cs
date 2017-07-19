@@ -375,12 +375,16 @@ namespace JiraSVN.Jira
 		{
 			if (String.IsNullOrEmpty(comment)) return;
 
-			RemoteComment rc = new RemoteComment();
-			rc.author = CurrentUser.Id;
-			rc.body = comment;
-			rc.created = DateTime.Now;
+            Comment c = new Comment();
 
-			_service.addComment(_token, issue.DisplayId, rc);
+            c.Author = CurrentUser.Id;
+            c.Body = comment;
+
+            Log.Verbose("Adding Comment \"" + c.Body + "\" from \"" + c.Author +  "\"to issue \"" + issue.DisplayId + "\" ...");
+
+            jira.GetIssue(issue.DisplayId).AddComment(c);
+
+            Log.Verbose("Comment added");
 		}
 
 		internal JiraAction[] GetActions(JiraIssue issue)
@@ -388,10 +392,10 @@ namespace JiraSVN.Jira
 			List<JiraAction> results = new List<JiraAction>();
 			try
 			{
-				RemoteNamedObject[] actionsAvailable = _service.getAvailableActions(_token, issue.DisplayId);
-				if (actionsAvailable != null)//dumbasses
-					foreach (RemoteNamedObject item in actionsAvailable)
-						results.Add(new JiraAction(item));
+                IEnumerable<JiraNamedEntity> actionsAvailable = jira.GetIssue(issue.DisplayId).GetAvailableActions();
+                if (actionsAvailable != null)//dumbasses
+					foreach (JiraNamedEntity item in actionsAvailable)
+						results.Add(new JiraAction(new RemoteNamedObject { id=item.Id, name = item.Name }));
 			}
 			catch { }
 			return results.ToArray();
