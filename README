@@ -1,44 +1,14 @@
 Welcome,
 
 Forked from:
-https://github.com/dscowan/JiraSVN
+https://github.com/gmoore777/JiraSVN
 
+Made JIRA comment function compatible with REST.
 
-Converted from using SOAP to communicate with JIRA, to using REST.
-Also upped the .NET version that this project and other accompanying DLLs were using
-from .NET 3.5 to .NET 4.0 including signing all the DLLs.
-
-Version 3.2.0.x
+Version 3.2.0.3
 
 
 Full installer downloads available at:
-https://github.com/gmoore777/JiraSVN/releases
+https://github.com/Iftest/JiraSVN/releases
 Choose the newest release. 
 Download the JiraTortoiseSvnPlugin-x64.msi file.
-
-
-Installation guide:
-
-1.)
-Uninstall the old JiraTortoiseSvnPlugin:
- 
- Start --> Control Panel --> Programs and Features --> "TortoiseSVN Jira Plugin (64 bit)" --> rightClick-->Uninstall -->OK
-  
-  (don't confuse the above with "TortoiseGit2.1.0.0 (64 bit)")
-   
-2.)
-Delete 1 registry key:
-    
- Start --> regedit.exe --> rightClick --> Run as Administrator --> Edit --> Find -->  ttpstortoisegit.org
-     
- Expand that and remove the following key:
-         
-    Computer/HKEY_USERS/.../Software/httpstortoisegit.org/TortoiseGit/JiraSVN.Jira.JiraConnection <-- rightClick --> Delete --> Yes -->
-	  
-3.)
-Install the new JiraTortoiseSvnPlugin):
- Double click JiraTortoiseSvnPlugin-x64.msi --> Next --> "I accept the terms..." --> Next --> Typical --> Install --> Finish
-
-
-Build instructions:
-https://github.com/csharptest/JiraSVN/wiki/Build-Instructions
